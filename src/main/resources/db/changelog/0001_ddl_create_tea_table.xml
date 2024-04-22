@@ -1,0 +1,18 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="0001_ddl_create_statistic_table" author="Katya K.">
+        <createTable schemaName="public" tableName="tea" remarks="Хранение статистических данных о пользователе">
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="statistic_pkey" nullable="false"/>
+            </column>
+            <column name="user_name" type="varchar" remarks="Имя пользователя"/>
+            <column name="date_session" type="timestamp" remarks="Дата посещения"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="statistic"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
